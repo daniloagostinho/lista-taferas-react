@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { TarefaContext } from './TarefaContext';
 
@@ -51,9 +51,15 @@ const RemoverButton = styled(Button)`
   }
 `;
 
-function App() {
-  const [tarefa, setTarefa] = useState('');
-  const { tarefas, adicionarTarefa, removerTarefa } = useContext(TarefaContext);
+const App: React.FC = () => {
+  const [tarefa, setTarefa] = useState<string>('');
+  const tarefaContext = useContext(TarefaContext);
+
+  if (!tarefaContext) {
+    throw new Error('TarefaContext must be used within a TarefaProvider');
+  }
+
+  const { tarefas, adicionarTarefa, removerTarefa } = tarefaContext;
 
   const handleAdicionarTarefa = () => {
     adicionarTarefa(tarefa);
@@ -73,7 +79,7 @@ function App() {
         <Button onClick={handleAdicionarTarefa}>Adicionar</Button>
       </InputContainer>
       <TarefaList>
-        {tarefas.map((t, index) => (
+        {tarefas.map((t: any, index:any) => (
           <TarefaItem key={index}>
             {t}
             <RemoverButton onClick={() => removerTarefa(index)}>Remover</RemoverButton>
@@ -82,6 +88,6 @@ function App() {
       </TarefaList>
     </AppContainer>
   );
-}
+};
 
 export default App;
