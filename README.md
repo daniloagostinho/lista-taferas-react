@@ -7,6 +7,7 @@ Um projeto simples de Lista de Tarefas construído com React, utilizando recurso
 - **React**: 18.3.1
 - **styled-components**: Para estilizar os componentes de forma modular
 - **Context API**: Para gerenciamento de estado global
+- **TypeScript**: Para criar interfaces e tipos, facilitando o debug em tempo real da aplicação
 
 ## Funcionalidades
 
