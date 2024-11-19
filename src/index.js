@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { TarefaProvider } from './TarefaContext';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <TarefaProvider>
+      <App />
+    </TarefaProvider>
   </React.StrictMode>
 );
 
